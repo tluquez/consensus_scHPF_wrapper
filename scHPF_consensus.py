@@ -243,6 +243,7 @@ for i in ks:
         print(f"Error calculating modularity at k {i}: {e}")
 
 modularity = pd.DataFrame({'k': ks, 'modularity': modularity})
+modularity['diff_modularity'] = modularity['modularity'].diff().fillna(0)
 modularity.to_csv(outdir + '/' + prefix + '.walktrap.tsv', sep='\t',
                   index=False)
 
